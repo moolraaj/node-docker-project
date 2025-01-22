@@ -1,31 +1,18 @@
-
+version: '3.8'
 services:
   nginx:
-    image: nginx:stable-alpine
-    ports:
-      - "3000:80"
-    volumes:
-      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
-    
+      ports:
+      - "80:80"
   node-container:
-    build:
+    build: 
       context: .
       args:
-        NODE_ENV: production
+        - NODE_ENV=production
     environment:
-      NODE_ENV: production
-      PORT: 8500
+      - NODE_ENV=production
     command: node index.js
-    depends_on:
-      - mongo
-
+    
   mongo:
-    image: mongo
     environment:
       MONGO_INITDB_ROOT_USERNAME: raaj
       MONGO_INITDB_ROOT_PASSWORD: raaj@123
-    volumes:
-      - mongodb:/data/db
-
-volumes:
-  mongodb:
