@@ -1,3 +1,4 @@
+version: '3.8'
 
 services:
   nginx:
@@ -5,15 +6,19 @@ services:
     ports:
       - "3000:80"
     volumes:
-    - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
     
   node-container:
-    build: .
+    build:
+      context: .
+      args:
+        NODE_ENV: production
     environment:
-      - "PORT=8500"
+      NODE_ENV: production
+      PORT: 8500
+    command: node index.js
     depends_on:
       - mongo
-    
 
   mongo:
     image: mongo
@@ -25,4 +30,3 @@ services:
 
 volumes:
   mongodb:
-
