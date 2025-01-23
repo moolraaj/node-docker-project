@@ -13,7 +13,7 @@ app.use(express.json())
 app.use(cors()) 
 
 app.get('/api',(req,resp)=>{
-    resp.send(`<h1>welcome to development mode </h1>`)
+    resp.send(`<h1>i learn docker form sanjeev</h1>`)
 })
 
 
