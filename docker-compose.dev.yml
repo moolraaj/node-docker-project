@@ -2,7 +2,7 @@ version: '3.8'
 services:
   nginx:
     ports:
-    - "3000:80"
+    - "3000:100"
 
   node-container:
     build: 
