@@ -7,8 +7,9 @@ services:
     volumes:
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
 
-  node-container:
+  node-image:
     build: .
+    image: raajspark/node-service
     environment:
       - 'PORT=8500'
     depends_on:

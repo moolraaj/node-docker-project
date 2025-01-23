@@ -3,7 +3,7 @@ services:
   nginx:
       ports:
       - "100:100"
-  node-container:
+  node-image:
     build: 
       context: .
       args:
